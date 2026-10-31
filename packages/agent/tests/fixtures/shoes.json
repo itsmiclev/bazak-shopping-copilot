@@ -1,0 +1,102 @@
+[
+  {
+    "id": 88,
+    "title": "Nike Air Jordan 1 Red And Black",
+    "description": "The Nike Air Jordan 1 in Red and Black is an iconic basketball sneaker known for its stylish design and high-performance features, making it a favorite among sneaker enthusiasts and athletes.",
+    "price": 149.99,
+    "category": "mens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/thumbnail.webp",
+    "brand": "Nike",
+    "tags": ["footwear", "athletic shoes"]
+  },
+  {
+    "id": 89,
+    "title": "Nike Baseball Cleats",
+    "description": "Nike Baseball Cleats are designed for maximum traction and performance on the baseball field. They provide stability and support for players during games and practices.",
+    "price": 79.99,
+    "category": "mens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/thumbnail.webp",
+    "brand": "Nike",
+    "tags": ["footwear", "sports cleats"]
+  },
+  {
+    "id": 90,
+    "title": "Puma Future Rider Trainers",
+    "description": "The Puma Future Rider Trainers offer a blend of retro style and modern comfort. Perfect for casual wear, these trainers provide a fashionable and comfortable option for everyday use.",
+    "price": 89.99,
+    "category": "mens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/thumbnail.webp",
+    "brand": "Puma",
+    "tags": ["footwear", "casual shoes"]
+  },
+  {
+    "id": 91,
+    "title": "Sports Sneakers Off White & Red",
+    "description": "The Sports Sneakers in Off White and Red combine style and functionality, making them a fashionable choice for sports enthusiasts. The red and off-white color combination adds a bold and energetic touch.",
+    "price": 119.99,
+    "category": "mens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/thumbnail.webp",
+    "brand": "Off White",
+    "tags": ["footwear", "athletic shoes"]
+  },
+  {
+    "id": 92,
+    "title": "Sports Sneakers Off White Red",
+    "description": "Another variant of the Sports Sneakers in Off White Red, featuring a unique design. These sneakers offer style and comfort for casual occasions.",
+    "price": 109.99,
+    "category": "mens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/thumbnail.webp",
+    "brand": "Off White",
+    "tags": ["footwear", "casual shoes"]
+  },
+  {
+    "id": 185,
+    "title": "Black & Brown Slipper",
+    "description": "The Black & Brown Slipper is a comfortable and stylish choice for casual wear. Featuring a blend of black and brown colors, it adds a touch of sophistication to your relaxation.",
+    "price": 19.99,
+    "category": "womens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/thumbnail.webp",
+    "brand": "Comfort Trends",
+    "tags": ["footwear", "slippers"]
+  },
+  {
+    "id": 186,
+    "title": "Calvin Klein Heel Shoes",
+    "description": "Calvin Klein Heel Shoes are elegant and sophisticated, designed for formal occasions. With a classic design and high-quality materials, they complement your stylish ensemble.",
+    "price": 79.99,
+    "category": "womens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/thumbnail.webp",
+    "brand": "Calvin Klein",
+    "tags": ["footwear", "heel shoes"]
+  },
+  {
+    "id": 187,
+    "title": "Golden Shoes Woman",
+    "description": "The Golden Shoes for Women are a glamorous choice for special occasions. Featuring a golden hue and stylish design, they add a touch of luxury to your outfit.",
+    "price": 49.99,
+    "category": "womens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/thumbnail.webp",
+    "brand": "Fashion Diva",
+    "tags": ["footwear", "women's shoes"]
+  },
+  {
+    "id": 188,
+    "title": "Pampi Shoes",
+    "description": "Pampi Shoes offer a blend of comfort and style for everyday use. With a versatile design, they are suitable for various casual occasions, providing a trendy and relaxed look.",
+    "price": 29.99,
+    "category": "womens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/thumbnail.webp",
+    "brand": "Pampi",
+    "tags": ["footwear", "casual shoes"]
+  },
+  {
+    "id": 189,
+    "title": "Red Shoes",
+    "description": "The Red Shoes make a bold statement with their vibrant red color. Whether for a party or a casual outing, these shoes add a pop of color and style to your wardrobe.",
+    "price": 34.99,
+    "category": "womens-shoes",
+    "thumbnail": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/thumbnail.webp",
+    "brand": "Fashion Express",
+    "tags": ["footwear", "women's shoes"]
+  }
+]
