@@ -1,0 +1,34 @@
+{
+  "name": "bazak-shopping-copilot",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev -w @bazak/server\" \"npm run dev -w @bazak/web\"",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run build -w @bazak/web",
+    "eval": "tsx packages/agent/evals/run.ts",
+    "check:catalog": "tsx scripts/check-catalog.ts",
+    "benchmark:decisions": "tsx scripts/benchmark-decisions.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.106",
+    "ai": "^7.0.159",
+    "zod": "^4.6.7"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
