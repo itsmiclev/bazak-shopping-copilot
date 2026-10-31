@@ -2,6 +2,13 @@
 
 A local conversational product discovery app using the DummyJSON catalog and only `gpt-6-luna`. Search starts on a minimal landing page, then moves into a chat with product cards. Conversations survive refreshes, browser closure, and normal server restarts.
 
+## Submission documents
+
+- [Submission overview](submission.md): requirement coverage, reviewer walkthrough and email handoff.
+- [Application architecture](architecture.md): package boundaries, lifecycle and tradeoffs.
+- [Agent architecture](agent-architecture.md): model loop, tools, context and failure handling.
+- [Verification](verification.md): reproduction commands, results and evaluation limitations.
+
 ## Run locally
 
 Requires Node.js 22.12+ and npm. From the repository root:
@@ -46,7 +53,7 @@ NestJS replaces the original manual HTTP dispatcher to make routing, injection, 
 
 TanStack Query owns server-state fetching, infinite pagination, mutations, retries and cancellation. TanStack Virtual handles long message lists. Message revisions prevent stale polling results replacing newer content; cache keys isolate conversations. Local React state is reserved for drafts, drawer visibility and navigation. We did not add TanStack Router or Form: this app has one screen and a simple composer, so those would add concepts without removing meaningful code.
 
-The shared package provides runtime schemas and inferred types for products, messages, search state and API contracts, plus small shared rules for search identity and conversation status. Both the HTTP boundary and persistence validate those contracts. It contains no database, model provider or React dependencies. This avoids a generic utility package with unrelated responsibilities. See [the architecture walkthrough](docs/architecture.md) for the request path and tradeoffs.
+The shared package provides runtime schemas and inferred types for products, messages, search state and API contracts, plus small shared rules for search identity and conversation status. Both the HTTP boundary and persistence validate those contracts. It contains no database, model provider or React dependencies. This avoids a generic utility package with unrelated responsibilities. See [the architecture walkthrough](architecture.md) for the request path and tradeoffs.
 
 Vercel AI SDK provides typed tools, model streaming, a bounded tool loop and structured judge output. Its ecosystem is useful for future expansion, but its SDK does not require Vercel hosting or AI Gateway. This implementation uses the OpenAI provider directly because the assignment supplies that credential. Provider migration still requires validating model behavior and options, even with an SDK abstraction.
 
@@ -55,7 +62,7 @@ Two alternatives considered:
 - **LangChain:** this app has one read-only catalog integration and a short tool loop. Adding its orchestration abstractions would increase the code and concepts to explain without solving an additional requirement. Both approaches permit self-hosting; infrastructure freedom is not a difference unique to LangChain.
 - **Direct OpenAI integration:** viable and smaller in dependency surface, but we would implement more streaming and tool-loop plumbing ourselves. The SDK gives us those primitives while keeping catalog retrieval and persistence explicit.
 
-These are implementation rationales to review and rewrite in your own voice before submission. The original user decisions and proposed refinements are in [the decision register](https://chatgpt.com/space/page_4319be7c69bc8191af62cd98f5002bbb). That private Page is not a substitute for this repository README.
+The rationale and tradeoffs required for review are included in this repository. AI assistance was used during implementation and evaluation; the candidate remains responsible for understanding and defending the choices.
 
 ## Retrieval strategy
 
@@ -111,7 +118,7 @@ Priorities would be: broader multi-turn evaluation with adversarial constraint c
 
 The landing page uses decorative CSS product illustrations rather than photos of people. Actual result cards use catalog images. Motion respects reduced-motion preferences. The supplied [OpenAPI YAML](docs/dummyjson_products_openapi.yaml) has been reconciled with the implementation. Search uses documented `q` and `limit`; category browsing uses the category slug and `limit`. Price bounds and sorting are local because these endpoints do not document those query parameters. We deliberately do not use the optional category discovery or single-product endpoints in this version. The provided file is preserved unchanged; it is a simplified reference (its top-level `description` would need moving under `info` before strict OpenAPI validation/code generation).
 
-The source repository is private at https://github.com/itsmiclev/bazak-shopping-copilot. No submission email has been sent. Before submitting, review the code, rewrite the reasoning in your own words, and ensure the ignored credential and conversation data are absent from the Git repository.
+The [source repository](https://github.com/itsmiclev/bazak-shopping-copilot) is private. Reviewers need repository access. See [submission.md](submission.md) for the requirement map and handoff instructions. The submission email has not been sent.
 
 ## Shoe recall audit and Decisions experiment
 
