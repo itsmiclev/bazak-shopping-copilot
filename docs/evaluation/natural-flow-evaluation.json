@@ -1,0 +1,460 @@
+{
+  "date": "2026-10-31",
+  "model": "gpt-6-luna",
+  "scope": "Latest scoped results selected from separate synthetic evaluation runs; not a single final full-suite replay.",
+  "final_stop_rule_live_rerun": false,
+  "full_live_registry_cases": 23,
+  "privacy": "Contains synthetic test identifiers, verdicts, public catalog product IDs and tool names only. No stored user conversations, message histories, credentials or provider payloads.",
+  "runs": [
+    {
+      "group": "budget",
+      "source_log": "eval-natural-budget-final.jsonl",
+      "source_sha256": "958085a34c3f235c82980ef16aa49bbfcc6eb747f4b028cd4793e47a8bf7102c",
+      "passed": 4,
+      "total": 4,
+      "cases": [
+        {
+          "name": "natural-budget explicit lower and upper bounds",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Both USD price bounds were applied to the footwear searches. The completed trainer-specific men\u2019s query returned no products; the women\u2019s trainer-specific query failed after the request budget was exhausted, which the response discloses rather than treating as a no-match.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByPrice",
+            "searchByAttributes"
+          ]
+        },
+        {
+          "name": "natural-budget explore cheaper alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "It searched below the original minimum and gave the retrieved men\u2019s options\u2019 prices without implying they meet the original $150\u2013$200 range. The women\u2019s query returned no matching products.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByAttributes"
+          ]
+        },
+        {
+          "name": "natural-budget accepted alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "It searched the cheaper scope (up to $149.99) and showed four matching men\u2019s trainers/sneakers from retrieved results, without restoring the original price floor or adding an unnecessary question.",
+          "product_ids": [
+            90,
+            92,
+            91,
+            88
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-budget change use after acceptance",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "They searched within the accepted under-$150 scope and selected products whose descriptions support casual or everyday wear. The claims match the retrieved results.",
+          "product_ids": [
+            90,
+            92
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        }
+      ],
+      "note": "Targeted rerun, separate from the other groups."
+    },
+    {
+      "group": "discovery",
+      "source_log": "eval-natural-discovery-final.jsonl",
+      "source_sha256": "b0d23a1900d7b1ab8607905055455ea8dde90b65f1ab7d8099bf90144e9cfef3",
+      "passed": 2,
+      "total": 2,
+      "cases": [
+        {
+          "name": "natural-discovery personal care beyond makeup",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "The search retrieved relevant skincare inventory and the assistant suggested a men\u2019s lotion plus a broadly suitable body wash, without stereotyping or blocking results with questions.",
+          "product_ids": [
+            120,
+            119
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-discovery contextual fragrance request",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "It uses the personal-care context to suggest a retrieved fragrance, and the fresh, clean, unisex description is supported by the product evidence.",
+          "product_ids": [
+            6
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        }
+      ],
+      "note": "Targeted rerun, separate from the other groups."
+    },
+    {
+      "group": "currency",
+      "source_log": "eval-natural-flow-initial.jsonl",
+      "source_sha256": "e0d95a24e2152e2bd897f85dfd96d5d7cda3cb98c793e8c8240c31f85da9e598",
+      "passed": 2,
+      "total": 2,
+      "cases": [
+        {
+          "name": "natural-currency unsupported budget",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Recognizes that the catalog is priced in USD and asks for a USD budget or permission to browse without a price filter; it does not assume a conversion or show products as within the ILS budget.",
+          "product_ids": [],
+          "tool_names": []
+        },
+        {
+          "name": "natural-currency explicit USD correction",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Applied the corrected USD $80 ceiling, searched fragrances, and presented three retrieved options priced within budget without asking again about currency.",
+          "product_ids": [
+            6,
+            9,
+            10
+          ],
+          "tool_names": [
+            "searchByPrice",
+            "presentProducts"
+          ]
+        }
+      ],
+      "note": "These two cases passed in an initial overall5/9 run; other initial failures are not counted as passes."
+    },
+    {
+      "group": "stock",
+      "source_log": "eval-natural-stock-final.jsonl",
+      "source_sha256": "5e960b1d07bfcc442e0db09ccd6e7acd5cb2ec31559afb197a655a6e19c65b5b",
+      "passed": 1,
+      "total": 1,
+      "cases": [
+        {
+          "name": "natural-stock verify existence before availability claims",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Both shoe categories were successfully checked and fully covered; neither listing contains boots or sandals, while a slipper is present. The response reports that evidence without overstating availability.",
+          "product_ids": [],
+          "tool_names": [
+            "browseCategory",
+            "browseCategory"
+          ]
+        }
+      ],
+      "note": "Targeted rerun, separate from the other groups."
+    }
+  ],
+  "historical_runs": [
+    {
+      "kind": "Initial nine-case run",
+      "source_log": "eval-natural-flow-initial.jsonl",
+      "source_sha256": "e0d95a24e2152e2bd897f85dfd96d5d7cda3cb98c793e8c8240c31f85da9e598",
+      "passed": 5,
+      "total": 9,
+      "cases": [
+        {
+          "name": "natural-budget explicit lower and upper bounds",
+          "pass": false,
+          "assertions": [
+            "Specific request must attempt retrieval."
+          ],
+          "judge_pass": false,
+          "judge_reason": "It asks an unnecessary usage question and does not search for trainers within both the $150\u2013$200 bounds.",
+          "product_ids": [],
+          "tool_names": []
+        },
+        {
+          "name": "natural-budget explore cheaper alternatives",
+          "pass": false,
+          "assertions": [
+            "Do not present below-budget alternatives before the user accepts them."
+          ],
+          "judge_pass": true,
+          "judge_reason": "Searched for and reported retrieved lower-priced options with evidence-backed prices below the original $150 minimum, without suggesting they meet that range. The follow-up question is optional and comes after the results.",
+          "product_ids": [
+            90,
+            92,
+            91,
+            88
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-budget accepted alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched and presented the cheaper trainer options under $150, honoring the revised scope without restoring the original price floor or adding an unnecessary question.",
+          "product_ids": [
+            90,
+            92,
+            91,
+            88
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-budget change use after acceptance",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched within the accepted under-$150 scope and offered two retrieved options whose descriptions support casual or everyday wear.",
+          "product_ids": [
+            90,
+            92
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-discovery personal care beyond makeup",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "It searched skincare and recommended a men-specific lotion plus a broadly suitable body wash, with both products supported by retrieved inventory.",
+          "product_ids": [
+            120,
+            119
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "continueSearch",
+            "continueSearch",
+            "browseCategory",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-discovery contextual fragrance request",
+          "pass": false,
+          "assertions": [
+            "Contextual fragrance discovery produced no product options."
+          ],
+          "judge_pass": false,
+          "judge_reason": "It only reports that scent details couldn\u2019t be verified and doesn\u2019t help explore fragrance or scented-care options, despite the relevant search context.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByAttributes",
+            "searchByAttributes"
+          ]
+        },
+        {
+          "name": "natural-currency unsupported budget",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Recognizes that the catalog is priced in USD and asks for a USD budget or permission to browse without a price filter; it does not assume a conversion or show products as within the ILS budget.",
+          "product_ids": [],
+          "tool_names": []
+        },
+        {
+          "name": "natural-currency explicit USD correction",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Applied the corrected USD $80 ceiling, searched fragrances, and presented three retrieved options priced within budget without asking again about currency.",
+          "product_ids": [
+            6,
+            9,
+            10
+          ],
+          "tool_names": [
+            "searchByPrice",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-stock verify existence before availability claims",
+          "pass": false,
+          "assertions": [],
+          "judge_pass": false,
+          "judge_reason": "The search calls covered women\u2019s shoes for boots, but the response says that search could not be completed. With no retrieved matches shown, it should report the result consistently rather than claim incomplete coverage.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByAttributes",
+            "searchByAttributes"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "Earlier budget run before constraint separation",
+      "source_log": "eval-natural-budget-before-constraint-separation.jsonl",
+      "source_sha256": "67c6990897f89af5abb9d60301d942b0f4fb991b48255736706d4a238dae187d",
+      "passed": 2,
+      "total": 4,
+      "cases": [
+        {
+          "name": "natural-budget explicit lower and upper bounds",
+          "pass": false,
+          "assertions": [],
+          "judge_pass": false,
+          "judge_reason": "The search did not complete for women\u2019s shoes, and the empty men\u2019s results do not establish that no matches exist. Instead of offering a sensible alternative, it asks an unnecessary style-refinement question despite the requested trainer type and price range being clear.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByAttributes",
+            "searchByPrice"
+          ]
+        },
+        {
+          "name": "natural-budget explore cheaper alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched below $150 and reported the retrieved alternatives with their prices, without implying they meet the original $150 minimum. The women\u2019s-shoes search returned no matching products.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByPrice"
+          ]
+        },
+        {
+          "name": "natural-budget accepted alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched and presented relevant trainer/sneaker options under $150, matching the accepted cheaper scope without restoring the original price floor.",
+          "product_ids": [
+            90,
+            92,
+            91,
+            88
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-budget change use after acceptance",
+          "pass": false,
+          "assertions": [],
+          "judge_pass": false,
+          "judge_reason": "It retained the under-$150 scope and included supported casual options, but also recommended Sports Sneakers Off White & Red based only on a description aimed at sports enthusiasts\u2014not casual everyday wear.",
+          "product_ids": [
+            90,
+            92,
+            91,
+            188
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "Earlier budget run before page reuse",
+      "source_log": "eval-natural-budget-before-reuse.jsonl",
+      "source_sha256": "c6b34125d467036f42569bd1c8e4379e470d0abe17d86c9dd141d7b01371b94d",
+      "passed": 3,
+      "total": 4,
+      "cases": [
+        {
+          "name": "natural-budget explicit lower and upper bounds",
+          "pass": false,
+          "assertions": [],
+          "judge_pass": false,
+          "judge_reason": "The searches returned filtered-empty pages that may have more candidates, and the retrieval notes required pagination. With the request budget exhausted, the assistant couldn\u2019t conclude that no trainers matched the $150\u2013$200 range.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByAttributes",
+            "searchByPrice"
+          ]
+        },
+        {
+          "name": "natural-budget explore cheaper alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched below $150 and reported the four retrieved trainer-style prices accurately, without implying they met the original $150 minimum.",
+          "product_ids": [],
+          "tool_names": [
+            "searchByAttributes"
+          ]
+        },
+        {
+          "name": "natural-budget accepted alternatives",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched the accepted under-$150 scope and presented relevant retrieved trainers/sneakers; the women\u2019s no-match statement is supported by the search results.",
+          "product_ids": [
+            90,
+            92,
+            88
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        },
+        {
+          "name": "natural-budget change use after acceptance",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Kept the cheaper scope under $150 and selected products whose descriptions support casual or everyday wear; the women\u2019s search returned no matches.",
+          "product_ids": [
+            90,
+            92
+          ],
+          "tool_names": [
+            "searchByAttributes",
+            "presentProducts"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "Judge-only re-evaluation of existing agent evidence",
+      "source_log": "eval-natural-budget-coverage-rejudge.jsonl",
+      "source_sha256": "698c17bf1bf01fa5728aeeacaab8b073d3e706bf51dde44112c34327587d0c56",
+      "passed": 1,
+      "total": 1,
+      "cases": [
+        {
+          "name": "natural-budget explicit lower and upper bounds",
+          "pass": true,
+          "assertions": [],
+          "judge_pass": true,
+          "judge_reason": "Searched trainer-style shoes with both $150 and $200 bounds in men\u2019s and women\u2019s categories. The results are scoped to those searches, and the assistant offers a sensible alternative without presenting out-of-range products.",
+          "product_ids": [],
+          "tool_names": []
+        }
+      ]
+    }
+  ]
+}
